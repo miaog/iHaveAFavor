@@ -41,8 +41,7 @@ public class ItemListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "CHANGE TO CREATE FAVORS PAGE", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                createFavor(view);
             }
         });
 

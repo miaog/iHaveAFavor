@@ -1,4 +1,4 @@
-package com.example.gloriamiao.ihaveafavor.favors;
+package com.example.gloriamiao.ihaveafavor;
 
 import android.content.Intent;
 import android.os.Bundle;

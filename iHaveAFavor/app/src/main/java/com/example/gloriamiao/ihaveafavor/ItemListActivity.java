@@ -41,8 +41,7 @@ public class ItemListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "CHANGE TO CREATE FAVORS PAGE", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                createFavor(view);
             }
         });
 
@@ -55,6 +54,10 @@ public class ItemListActivity extends AppCompatActivity {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(FavorContent.ITEMS));
     }
 
+    public void createFavor(View view){
+        Intent intent = new Intent(this, SubmitFavorForm.class);
+        startActivity(intent);
+    }
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 

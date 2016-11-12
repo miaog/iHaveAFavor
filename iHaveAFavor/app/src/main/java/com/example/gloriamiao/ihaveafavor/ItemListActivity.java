@@ -55,6 +55,10 @@ public class ItemListActivity extends AppCompatActivity {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(FavorContent.ITEMS));
     }
 
+    public void createFavor(View view){
+        Intent intent = new Intent(this, SubmitFavorForm.class);
+        startActivity(intent);
+    }
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 

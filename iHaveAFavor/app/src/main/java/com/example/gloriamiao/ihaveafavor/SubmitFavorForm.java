@@ -2,6 +2,7 @@ package com.example.gloriamiao.ihaveafavor;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
@@ -16,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -38,6 +40,7 @@ import java.util.List;
 
 public class SubmitFavorForm extends AppCompatActivity {
     private Location location;
+    private Button submitButton;
     public FavorUser favor;
 
     static int chosenHour = 0;
@@ -51,6 +54,16 @@ public class SubmitFavorForm extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Intent intent = getIntent();
         FavorUser favor = intent.getParcelableExtra("favor");
+
+        submitButton = (Button) this.findViewById(R.id.submit_button);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = view.getContext();
+                Intent intent = new Intent(context, ItemListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void submitFavor(View view){

@@ -124,17 +124,16 @@ public class FavorContent {
 //    };
     public static Map<String,String> fields = new HashMap<String,String>(){
         {
-            put("I NEED A BLUE BOOK ASAP. Find me on the benches on first Evans!444-541-4535", "444-541-4535|8:30 PM");
-            put("I lost my CS189 notes :( Someone send them to me?","george@berkeley.edu|9:00 PM");
-            put("Can someone sneak me food... Im on Mainstacks, first table to the left by the Entrance","imsohungry@its5AM.pie|1:30 AM");
+            put("I NEED A BLUE BOOK ASAP. Find me on the benches on first floor Evans!", "444-541-4535");
+            put("I lost my CS189 notes :( Someone send them to me?","george@berkeley.edu");
+            put("Can someone sneak me food... Im in Mainstacks, first table to the left by the Entrance","imsohungry@its5AM.pie");
         }
 
     };
     static {
         // Add some sample items.
         for (Map.Entry<String, String> entry : fields.entrySet()){
-            String[] fields = entry.getValue().split("|");
-            addItem(createFavorItem(entry.getKey(),fields[0],fields[1]));
+            addItem(createFavorItem(entry.getKey(), entry.getValue()));
         }
     }
 
@@ -143,15 +142,14 @@ public class FavorContent {
         ITEM_MAP.put(item.description, item);
     }
 
-    private static FavorItem createFavorItem(String description, String contact, String dueTime) {
+    private static FavorItem createFavorItem(String description, String contact) {
         key++;
-        makeDetails(contact, dueTime);
-        return new FavorItem(description, contact, dueTime, Integer.toString(key));
+        makeDetails(contact);
+        return new FavorItem(description, contact, Integer.toString(key));
     }
 
-    private static String makeDetails(String contact, String dueTime) {
+    private static String makeDetails(String contact) {
         StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(dueTime);
         builder.append("\nMore details information here.").append(contact);
         return builder.toString();
     }
@@ -162,18 +160,16 @@ public class FavorContent {
     public static class FavorItem {
         public final String description;
         public final String contact;
-        public final String dueTime;
         public final String key;
-        public FavorItem(String description, String contact, String dueTime, String key) {
+        public FavorItem(String description, String contact,String key) {
             this.description = description;
             this.contact = contact;
-            this.dueTime = dueTime;
             this.key = key;
         }
 
         @Override
         public String toString() {
-            return description;
+            return contact;
         }
         public String getKey(){
             return key;

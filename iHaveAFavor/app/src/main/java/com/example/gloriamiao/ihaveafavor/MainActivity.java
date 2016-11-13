@@ -38,9 +38,7 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     private LoginButton loginButton;
-    private Button postButton;
     private Button fetchButton;
-    private Button deleteButton;
     private CallbackManager callbackManager;
     private FavorUser user;
     public LocationManager lm;
@@ -94,18 +92,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        Snackbar.make(findViewById(android.R.id.content), "blabla!", Snackbar.LENGTH_LONG)
+        Snackbar.make(findViewById(android.R.id.content), "Welcome!", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
-//        postButton = (Button) this.findViewById(R.id.post_button);
-//        postButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Context context = view.getContext();
-//                Intent intent = new Intent(context, SubmitFavorForm.class);
-//                intent.putExtra("favor", favor);
-//                context.startActivity(intent);
-//            }
-//        });
         fetchButton = (Button) this.findViewById(R.id.fetch_button);
         fetchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,15 +103,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        deleteButton = (Button) this.findViewById(R.id.delete_button);
-//        deleteButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(context, SubmitFavorForm.class);
-//                startActivity(intent);
-//            }
-//        });
-
     }
 
     @Override

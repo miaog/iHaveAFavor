@@ -14,8 +14,16 @@ import android.widget.ImageView;
 
 import android.graphics.Color;
 
-public class ItemDetailActivity extends AppCompatActivity {
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.GetCallback;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
+import java.util.List;
+
+public class ItemDetailActivity extends AppCompatActivity {
+    public FavorUser favor;
     private int clicked = 0;
     FloatingActionButton fab;
 
@@ -24,6 +32,9 @@ public class ItemDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
+        Intent intent = getIntent();
+        final FavorUser favor = intent.getParcelableExtra("favor");
+        final String favor_key = intent.getParcelableExtra("favor_key");
         setSupportActionBar(toolbar);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -34,6 +45,15 @@ public class ItemDetailActivity extends AppCompatActivity {
                 if (clicked == 0) {
                     clicked = 1;
                     fab.setImageResource(R.drawable.ic_cab_done_holo_light);
+
+                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Favor");
+                    query.getInBackground(favor_key, new GetCallback<ParseObject>() {
+                        public void done(ParseObject favors, ParseException e) {
+                            if (e == null) {
+                                favor.accept_favor(favors);
+                            }
+                        }
+                    });
 
                     Snackbar.make(view, "ACCEPTED!!", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();

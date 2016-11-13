@@ -51,18 +51,10 @@ public class SubmitFavorForm extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Intent intent = getIntent();
         FavorUser favor = intent.getParcelableExtra("favor");
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     public void submitFavor(View view){
-        EditText fav = (EditText) findViewById(R.id.favor_message);
+        EditText fav = (EditText) findViewById(R.id.contact_message);
         String f = fav.getText().toString();
         EditText desc = (EditText) findViewById(R.id.description_message);
         String d = desc.getText().toString();
@@ -93,12 +85,6 @@ public class SubmitFavorForm extends AppCompatActivity {
             chosenMin = minute;
         }
     }
-//
-//    public void selectLocation(View view){
-//        //Use your geolocation stuff here
-//        TextView mTextView = (TextView) findViewById(R.id.place_message);
-//        mTextView.setText("text here");
-//    }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

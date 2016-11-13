@@ -14,6 +14,11 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.widget.Button;
+import android.content.Context;
+import android.content.Intent;
+import android.app.Activity;
+
 // Add this to the header of your file:
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -33,6 +38,9 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     private LoginButton loginButton;
+    private Button postButton;
+    private Button fetchButton;
+    private Button deleteButton;
     private CallbackManager callbackManager;
     private FavorUser user;
     public LocationManager lm;
@@ -58,15 +66,6 @@ public class MainActivity extends AppCompatActivity {
                         .server("https://5e56abb4.ngrok.io/parse")
                         .build()
         );
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "sending info", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         loginButton = (LoginButton) this.findViewById(R.id.login_button);
         loginButton.setReadPermissions(Arrays.asList(
@@ -97,6 +96,33 @@ public class MainActivity extends AppCompatActivity {
         });
         Snackbar.make(findViewById(android.R.id.content), "blabla!", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
+//        postButton = (Button) this.findViewById(R.id.post_button);
+//        postButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Context context = view.getContext();
+//                Intent intent = new Intent(context, SubmitFavorForm.class);
+//                intent.putExtra("favor", favor);
+//                context.startActivity(intent);
+//            }
+//        });
+        fetchButton = (Button) this.findViewById(R.id.fetch_button);
+        fetchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = view.getContext();
+                Intent intent = new Intent(context, ItemListActivity.class);
+                startActivity(intent);
+            }
+        });
+//        deleteButton = (Button) this.findViewById(R.id.delete_button);
+//        deleteButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(context, SubmitFavorForm.class);
+//                startActivity(intent);
+//            }
+//        });
 
     }
 

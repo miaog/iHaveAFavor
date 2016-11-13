@@ -106,6 +106,9 @@
                 android:layout_height="30dp"
                 android:hint="@string/time_message" />
         </RelativeLayout>
+
+
+
     <Button android:layout_marginLeft="100dp"
         android:layout_marginRight="110dp"
         android:layout_marginTop="150dp"
@@ -122,7 +125,8 @@
         android:onClick="submitFavor"/>
     </LinearLayout>
 
-    <include layout="@layout/content_submit_favor_form" />
+    <include layout="@layout/content_submit_favor_form"
+        android:id="@+id/include" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -131,5 +135,14 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
+
+    <Button
+        android:text="Clock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="320dp"
+        android:layout_marginLeft="140dp"
+        android:id="@+id/clock_button"
+        android:onClick="showTimePickerDialog"/>
 
 </android.support.design.widget.CoordinatorLayout>

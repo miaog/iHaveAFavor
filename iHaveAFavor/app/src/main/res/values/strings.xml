@@ -2,7 +2,7 @@
     <string name="app_name">iHaveAFavor</string>
     <string name="title_item_detail">Item Detail</string>
     <string name="form_submit">Submit</string>
-    <string name="favor_message">What favor would you like us to do?</string>
+    <string name="favor_message">What do you need help with?</string>
     <string name="time_message">What time do you need it by?</string>
     <string name="place_message">Where would you like it?</string>
     <string name="title_activity_submit_favor_form">SubmitFavorForm</string>

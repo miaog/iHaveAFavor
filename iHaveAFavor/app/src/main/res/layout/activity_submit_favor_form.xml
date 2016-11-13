@@ -6,11 +6,17 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.example.gloriamiao.ihaveafavor.SubmitFavorForm">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+
+    <include layout="@layout/content_submit_favor_form"
+        android:layout_width="wrap_content"
+        android:layout_height="433dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkBlue"
-    android:orientation="vertical" >
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+        android:weightSum="1">
         <!--
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -26,19 +32,22 @@
     -->
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:src="@drawable/favor_logo"
+        android:layout_height="70dp"
+        android:src="@drawable/post_favor"
         />
     <EditText android:id="@+id/favor_message"
         android:layout_margin="20dp"
         android:paddingTop="5dp"
+        android:paddingLeft="15sp"
+        android:paddingRight="10sp"
         android:background="@drawable/text_box"
-        android:layout_width="300dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
         android:hint="@string/favor_message"
         android:typeface="serif"
-        android:textSize="12sp"
-/>
+        android:singleLine="false"
+        android:selectAllOnFocus="false"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium.Inverse" />
         <RelativeLayout
             android:id="@+id/location_label"
             android:layout_width="match_parent"
@@ -46,90 +55,109 @@
             <TextView android:id="@+id/location"
                 android:layout_marginLeft="20sp"
                 android:padding="0dp"
-                android:layout_width="100dp"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:text = "Location: "
                 android:layout_height="match_parent"
-                />
+                android:layout_width="200dp" />
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/location_layout"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-        <ImageButton
-            android:id="@+id/location_earth"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@mipmap/earth"
-            android:onClick="selectLocation"/>
-    <TextView android:id="@+id/place_message"
-        android:layout_marginLeft="50sp"
-        android:layout_marginStart="50sp"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp">
 
-        android:paddingTop="5dp"
-        android:paddingStart="10sp"
-        android:paddingLeft="10sp"
-        android:layout_width="300dp"
-        android:text = "No position selected"
-        android:background="@drawable/text_box"
-        android:layout_height="30dp"
-        android:hint="@string/time_message" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/location"
+                android:layout_marginLeft="11dp"
+                android:layout_marginStart="11dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView android:id="@+id/place_message"
+
+                android:paddingTop="5dp"
+                android:paddingStart="10sp"
+                android:paddingLeft="10sp"
+                android:text = "@string/place_message"
+                android:background="@drawable/text_box"
+                android:layout_height="30dp"
+                android:hint="@string/place_message"
+                android:layout_width="300dp"
+                android:layout_marginRight="22dp"
+                android:layout_marginEnd="22dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/time_label"
             android:layout_width="match_parent"
             android:layout_height="30dp">
+
             <TextView android:id="@+id/time"
-                android:layout_marginLeft="20sp"
+                android:layout_marginLeft="21dp"
                 android:padding="0dp"
                 android:layout_width="200dp"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:text = "When you need it by: "
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="21dp" />
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/time_layout"
             android:layout_width="match_parent"
             android:layout_height="50dp">
+
+            <TextView android:id="@+id/time_message"
+                android:paddingTop="5dp"
+                android:paddingStart="10sp"
+                android:paddingLeft="10sp"
+                android:layout_width="300dp"
+                android:text = "@string/time_message"
+                android:background="@drawable/text_box"
+                android:layout_height="30dp"
+                android:hint="@string/time_message"
+                android:layout_alignBottom="@+id/imageView"
+                android:layout_marginRight="23dp"
+                android:layout_marginEnd="23dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@mipmap/clock"/>
-            <TextView android:id="@+id/time_message"
-                android:layout_marginLeft="50dp"
-                android:paddingTop="5dp"
-                android:paddingLeft="10dp"
-                android:layout_width="300dp"
-                android:background="@drawable/text_box"
-                android:layout_height="30dp"
-                android:hint="@string/time_message" />
+                android:src="@drawable/time"
+                android:layout_marginLeft="11dp"
+                android:layout_marginStart="11dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
         </RelativeLayout>
-    <Button android:layout_marginLeft="100dp"
-        android:layout_marginRight="110dp"
-        android:layout_marginTop="150dp"
-        android:padding="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="60sp"
-        android:shadowColor="#000000"
-        android:shadowDx="4.0"
-        android:shadowDy="1.3"
-        android:shadowRadius="1.6"
-        android:textColor="@color/white"
-        android:background="@drawable/button"
-        android:text="@string/form_submit"
-        android:onClick="submitFavor"/>
+
+        <Button android:layout_marginLeft="100dp"
+            android:layout_marginRight="110dp"
+            android:layout_marginTop="100dp"
+            android:padding="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="60sp"
+            android:shadowColor="#000000"
+            android:shadowDx="4.0"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6"
+            android:textColor="@color/white"
+            android:background="@drawable/button"
+            android:text="@string/form_submit"
+            android:onClick="submitFavor"/>
     </LinearLayout>
-
-    <include layout="@layout/content_submit_favor_form" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -2,6 +2,7 @@ package com.example.gloriamiao.ihaveafavor;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -28,7 +29,8 @@ import java.util.List;
  * item details side-by-side using two vertical panes.
  */
 public class ItemListActivity extends AppCompatActivity {
-
+    public FavorUser favor = new FavorUser(this);
+    public LocationManager lm= (LocationManager)getSystemService(Context.LOCATION_SERVICE);
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list);
@@ -57,6 +59,7 @@ public class ItemListActivity extends AppCompatActivity {
     public void createFavor(View v){
         Context context = v.getContext();
         Intent intent = new Intent(context, SubmitFavorForm.class);
+        intent.putExtra("favor", favor);
         context.startActivity(intent);
     }
 
@@ -87,7 +90,7 @@ public class ItemListActivity extends AppCompatActivity {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, ItemDetailActivity.class);
                     intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, holder.mItem.description);
-
+                    intent.putExtra("favor", favor);
                     context.startActivity(intent);
                 }
             });
@@ -102,7 +105,6 @@ public class ItemListActivity extends AppCompatActivity {
             public final View mView;
             public final TextView mContentView;
             public FavorContent.FavorItem mItem;
-
             public ViewHolder(View view) {
                 super(view);
                 mView = view;

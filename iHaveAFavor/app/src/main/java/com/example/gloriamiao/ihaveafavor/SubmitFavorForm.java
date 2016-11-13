@@ -1,6 +1,8 @@
 package com.example.gloriamiao.ihaveafavor;
 
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,8 +14,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+
+
 import com.example.gloriamiao.ihaveafavor.ItemListActivity;
 import com.example.gloriamiao.ihaveafavor.R;
+import com.parse.ParseGeoPoint;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
@@ -24,7 +29,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
 public class SubmitFavorForm extends AppCompatActivity {
+    private Location location;
+    public FavorUser favor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +40,8 @@ public class SubmitFavorForm extends AppCompatActivity {
         setContentView(R.layout.activity_submit_favor_form);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        Intent intent = getIntent();
+        FavorUser favor = intent.getParcelableExtra("favor");
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,42 +51,15 @@ public class SubmitFavorForm extends AppCompatActivity {
             }
         });
     }
-    public void selectLocation(View view){
-        //Use your geolocation stuff here
-        TextView mTextView = (TextView) findViewById(R.id.place_message);
-        mTextView.setText("text here");
-    }
-    public void submitForm(View view){
-        EditText favor = (EditText) findViewById(R.id.favor_message);
-        TextView place = (TextView) findViewById(R.id.place_message);
-        TextView time = (TextView) findViewById(R.id.time_message);
-        String f = favor.getText().toString();
-        String p = place.getText().toString();
-        String t = time.getText().toString();
-        String requester = "Sasa";
-        ParseObject testObject = new ParseObject("Favor");
-        testObject.put("favor", f);
-        testObject.put("place", p);
-        testObject.put("time", t);
-        testObject.put("requester", requester);
-        testObject.put("accepted", false);
-        testObject.saveInBackground();
 
-        ParseObject profileObject = new ParseObject(requester);
-        ParseQuery<ParseObject> q = ParseQuery.getQuery(requester);
-        q.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> objects, ParseException e) {
-            if (e == null) {
-            } else {
-            }
-        }});
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Favor");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> objects, ParseException e) {
-                if (e == null) {
-                }
-            }
-        });
+    public void submitFavor(View view){
+        EditText fav = (EditText) findViewById(R.id.favor_message);
+        String f = fav.getText().toString();
+        EditText desc = (EditText) findViewById(R.id.description_message);
+        String d = desc.getText().toString();
+        EditText time = (EditText) findViewById(R.id.time_message);
+        String t = time.getText().toString();
+        favor.post_favor(f, d,t);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

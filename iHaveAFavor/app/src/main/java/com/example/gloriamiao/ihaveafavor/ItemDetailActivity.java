@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.graphics.Color;
 
 public class ItemDetailActivity extends AppCompatActivity {
-
+    public FavorUser favor;
     private int clicked = 0;
     FloatingActionButton fab;
 
@@ -24,6 +24,8 @@ public class ItemDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
+        Intent intent = getIntent();
+        final FavorUser favor = intent.getParcelableExtra("favor");
         setSupportActionBar(toolbar);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -35,6 +37,7 @@ public class ItemDetailActivity extends AppCompatActivity {
                     clicked = 1;
                     fab.setImageResource(R.drawable.ic_cab_done_holo_light);
 
+                    favor.accept_offer();
                     Snackbar.make(view, "ACCEPTED!!", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }

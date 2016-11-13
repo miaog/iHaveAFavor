@@ -124,9 +124,9 @@ public class FavorContent {
 //    };
     public static Map<String,String> fields = new HashMap<String,String>(){
         {
-            put("444-541-4535", "I NEED A BLUE BOOK ASAP. Find me on the benches on first Evans!|8:30 PM");
-            put("george@berkeley.edu","I lost my CS189 notes :( Someone send them to me?|9:00 PM");
-            put("imsohungry@its5AM.pie","Can someone sneak me food... Im on Mainstacks| first table to the left by the Entrance|1:30 AM");
+            put("I NEED A BLUE BOOK ASAP. Find me on the benches on first Evans!444-541-4535", "444-541-4535|8:30 PM");
+            put("I lost my CS189 notes :( Someone send them to me?","george@berkeley.edu|9:00 PM");
+            put("Can someone sneak me food... Im on Mainstacks, first table to the left by the Entrance","imsohungry@its5AM.pie|1:30 AM");
         }
 
     };
@@ -143,15 +143,16 @@ public class FavorContent {
         ITEM_MAP.put(item.description, item);
     }
 
-    private static FavorItem createFavorItem(String contact, String description, String dueTime) {
+    private static FavorItem createFavorItem(String description, String contact, String dueTime) {
         key++;
-        return new FavorItem(contact, description, dueTime, Integer.toString(key));
+        makeDetails(contact, dueTime);
+        return new FavorItem(description, contact, dueTime, Integer.toString(key));
     }
 
-    private static String makeDetails(String position) {
+    private static String makeDetails(String contact, String dueTime) {
         StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        builder.append("\nMore details information here.");
+        builder.append("Details about Item: ").append(dueTime);
+        builder.append("\nMore details information here.").append(contact);
         return builder.toString();
     }
 
@@ -159,13 +160,13 @@ public class FavorContent {
      * A Favor item representing a piece of content.
      */
     public static class FavorItem {
-        public final String contact;
         public final String description;
+        public final String contact;
         public final String dueTime;
         public final String key;
-        public FavorItem(String contact, String description, String dueTime, String key) {
-            this.contact = contact;
+        public FavorItem(String description, String contact, String dueTime, String key) {
             this.description = description;
+            this.contact = contact;
             this.dueTime = dueTime;
             this.key = key;
         }

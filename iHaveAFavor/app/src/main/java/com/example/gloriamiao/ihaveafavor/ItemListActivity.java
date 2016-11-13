@@ -1,10 +1,12 @@
 package com.example.gloriamiao.ihaveafavor;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -29,9 +31,14 @@ import java.util.List;
  * item details side-by-side using two vertical panes.
  */
 public class ItemListActivity extends AppCompatActivity {
-    public FavorUser favor = new FavorUser(this);
-    public LocationManager lm= (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+
+    public LocationManager lm;
+    public FavorUser favor;
+
     protected void onCreate(Bundle savedInstanceState) {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        favor = new FavorUser(this, lm);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list);
 

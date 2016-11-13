@@ -48,52 +48,6 @@
         android:singleLine="false"
         android:selectAllOnFocus="false"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium.Inverse" />
-        <RelativeLayout
-            android:id="@+id/location_label"
-            android:layout_width="match_parent"
-            android:layout_height="30dp">
-            <TextView android:id="@+id/location"
-                android:layout_marginLeft="20sp"
-                android:padding="0dp"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:text = "Location: "
-                android:layout_height="match_parent"
-                android:layout_width="200dp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/location_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="42dp">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/location"
-                android:layout_marginLeft="11dp"
-                android:layout_marginStart="11dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView android:id="@+id/place_message"
-
-                android:paddingTop="5dp"
-                android:paddingStart="10sp"
-                android:paddingLeft="10sp"
-                android:text = "@string/place_message"
-                android:background="@drawable/text_box"
-                android:layout_height="30dp"
-                android:hint="@string/place_message"
-                android:layout_width="300dp"
-                android:layout_marginRight="22dp"
-                android:layout_marginEnd="22dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
-        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/time_label"
@@ -144,6 +98,15 @@
                 android:layout_alignParentStart="true" />
         </RelativeLayout>
 
+        <Button
+            android:text="Clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="320dp"
+            android:layout_marginLeft="140dp"
+            android:id="@+id/clock_button"
+            android:onClick="showTimePickerDialog"/>
+
         <Button android:layout_marginLeft="100dp"
             android:layout_marginRight="110dp"
             android:layout_marginTop="100dp"
@@ -158,6 +121,7 @@
             android:background="@drawable/button"
             android:text="@string/form_submit"
             android:onClick="submitFavor"/>
+
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

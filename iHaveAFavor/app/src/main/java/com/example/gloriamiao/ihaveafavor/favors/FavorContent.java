@@ -32,6 +32,7 @@ public class FavorContent {
     }
 
     private static void addItem(FavorItem item) {
+        // TODO: Query for the objects, implement sorting
         ITEMS.add(item);
         ITEM_MAP.put(item.description, item);
     }

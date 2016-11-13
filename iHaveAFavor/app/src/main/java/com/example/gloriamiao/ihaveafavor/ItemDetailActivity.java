@@ -10,8 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
+import android.widget.ImageView;
+
+import android.graphics.Color;
 
 public class ItemDetailActivity extends AppCompatActivity {
+
+    private int clicked = 0;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +26,22 @@ public class ItemDetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "ACCEPTED", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                // TODO: Change to query for whether the user has accepted this or not
+                if (clicked == 0) {
+                    clicked = 1;
+                    fab.setImageResource(R.drawable.ic_cab_done_holo_light);
+
+                    Snackbar.make(view, "ACCEPTED!!", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+                else {
+                    clicked = 0;
+                    fab.setImageResource(R.drawable.ic_cab_done_holo_dark);
+                }
             }
         });
 

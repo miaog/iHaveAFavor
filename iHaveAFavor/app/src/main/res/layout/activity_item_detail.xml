@@ -48,6 +48,6 @@
         android:layout_margin="@dimen/fab_margin"
         app:layout_anchor="@+id/item_detail_container"
         app:layout_anchorGravity="top|end"
-        app:srcCompat="@drawable/ic_cab_done_holo_dark" />
+        app:srcCompat="@drawable/checkmark_btn_src" />
 
 </android.support.design.widget.CoordinatorLayout>

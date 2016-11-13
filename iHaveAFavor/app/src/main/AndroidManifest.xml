@@ -27,6 +27,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.gloriamiao.ihaveafavor.ItemListActivity" />
         </activity>
+        <activity
+            android:name=".SubmitFavorForm"
+            android:label="Submit Favors"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

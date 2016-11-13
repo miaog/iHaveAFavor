@@ -3,6 +3,7 @@ package com.example.gloriamiao.ihaveafavor;
 /**
  * Created by vivek on 11/12/16.
  */
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.location.Location;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
 
@@ -60,11 +62,13 @@ public class FavorUser implements Parcelable{
     private List<ParseObject> offerlist;
     private List<ParseObject> transactionlist;
     private Activity ma;
-    public FavorUser(Activity m) {
+    private LocationManager lm;
+
+    public FavorUser(Activity m, LocationManager l) {
         ma = m;
+        lm = l;
     }
     private int mData;
-
     /* everything below here is for implementing Parcelable */
 
     // 99.9% of the time you can just ignore this
@@ -95,7 +99,7 @@ public class FavorUser implements Parcelable{
         mData = in.readInt();
     }
 
-    public void post_favor(String title, String text, String time){
+    public void post_favor(String title, String text, String time, int hour, int minute){
         /*if (currFavor!=null){
             Snackbar.make(ma.findViewById(android.R.id.content), "Already posted a favor!", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
@@ -107,13 +111,16 @@ public class FavorUser implements Parcelable{
         currFavor.put("id", userId);
         currFavor.put("name", userName);
         currFavor.put("desc", title);
+        currFavor.put("hour", hour);
+        currFavor.put("minute", minute);
         currFavor.put("location", text);
         currFavor.put("time", time);
         Location location;
         double longitude = 0;
         double latitude = 0;
         try {
-            location = ma.lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            ActivityCompat.requestPermissions(ma, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             longitude = location.getLongitude();
             latitude = location.getLatitude();
         }catch(SecurityException e){}

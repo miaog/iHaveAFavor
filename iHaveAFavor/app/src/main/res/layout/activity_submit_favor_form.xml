@@ -45,9 +45,51 @@
         android:layout_height="100dp"
         android:hint="@string/favor_message"
         android:typeface="serif"
+        android:textSize="12sp"
+/>
+        <RelativeLayout
+            android:id="@+id/description_label"
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+            <TextView android:id="@+id/description"
+                android:layout_marginLeft="20sp"
+                android:padding="0dp"
+                android:layout_width="100dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:text = "Description: "
+                android:layout_height="match_parent"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/location_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+        <ImageButton
+            android:id="@+id/location_earth"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/earth"
+            android:onClick="selectLocation"/>
+    <EditText android:id="@+id/description_message"
+        android:layout_marginLeft="50sp"
+        android:layout_marginStart="50sp"
+
+        android:paddingTop="5dp"
+        android:paddingStart="10sp"
+        android:paddingLeft="10sp"
+        android:layout_width="300dp"
+        android:text = "No description ._."
+        android:textSize="15sp"
+        android:background="@drawable/text_box"
+        android:layout_height="140dp"
+        android:hint="@string/time_message"
         android:singleLine="false"
         android:selectAllOnFocus="false"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium.Inverse" />
+        </RelativeLayout>
+
+
 
         <RelativeLayout
             android:id="@+id/time_label"
@@ -55,6 +97,7 @@
             android:layout_height="30dp">
 
             <TextView android:id="@+id/time"
+                android:layout_marginTop="10sp"
                 android:layout_marginLeft="21dp"
                 android:padding="0dp"
                 android:layout_width="200dp"
@@ -71,8 +114,13 @@
             android:id="@+id/time_layout"
             android:layout_width="match_parent"
             android:layout_height="50dp">
+            <ImageView android:id = "@+id/imageView"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/clock"/>
 
             <TextView android:id="@+id/time_message"
+                android:layout_marginLeft="50dp"
                 android:paddingTop="5dp"
                 android:paddingStart="10sp"
                 android:paddingLeft="10sp"

@@ -6,4 +6,5 @@
     <string name="time_message">What time do you need it by?</string>
     <string name="place_message">Where would you like it?</string>
     <string name="title_activity_submit_favor_form">SubmitFavorForm</string>
+    <string name="title_activity_payment">PaymentActivity</string>
 </resources>

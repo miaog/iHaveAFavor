@@ -10,10 +10,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.gloriamiao.ihaveafavor.ItemListActivity;
 import com.example.gloriamiao.ihaveafavor.R;
+import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class SubmitFavorForm extends AppCompatActivity {
 
@@ -33,20 +42,42 @@ public class SubmitFavorForm extends AppCompatActivity {
             }
         });
     }
+    public void selectLocation(View view){
+        //Use your geolocation stuff here
+        TextView mTextView = (TextView) findViewById(R.id.place_message);
+        mTextView.setText("text here");
+    }
     public void submitForm(View view){
         EditText favor = (EditText) findViewById(R.id.favor_message);
-        EditText place = (EditText) findViewById(R.id.place_message);
-        EditText time = (EditText) findViewById(R.id.time_message);
+        TextView place = (TextView) findViewById(R.id.place_message);
+        TextView time = (TextView) findViewById(R.id.time_message);
         String f = favor.getText().toString();
         String p = place.getText().toString();
         String t = time.getText().toString();
-        //hash: NyqjT3gSNK7evHtV5kSxj3ZXKcs=
-          //      appid: 1508618309155393
-        ParseObject testObject = new ParseObject("Testing");
+        String requester = "Sasa";
+        ParseObject testObject = new ParseObject("Favor");
         testObject.put("favor", f);
         testObject.put("place", p);
         testObject.put("time", t);
+        testObject.put("requester", requester);
+        testObject.put("accepted", false);
         testObject.saveInBackground();
+
+        ParseObject profileObject = new ParseObject(requester);
+        ParseQuery<ParseObject> q = ParseQuery.getQuery(requester);
+        q.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, ParseException e) {
+            if (e == null) {
+            } else {
+            }
+        }});
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Favor");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                }
+            }
+        });
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

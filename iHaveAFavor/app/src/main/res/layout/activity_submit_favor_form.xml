@@ -27,12 +27,12 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:src="@drawable/FavorLogo"
+        android:src="@drawable/favor_logo"
         />
     <EditText android:id="@+id/favor_message"
         android:layout_margin="20dp"
         android:paddingTop="5dp"
-        android:background="@drawable/TextBox"
+        android:background="@drawable/text_box"
         android:layout_width="300dp"
         android:layout_height="30dp"
         android:hint="@string/favor_message"
@@ -72,7 +72,7 @@
         android:paddingLeft="10sp"
         android:layout_width="300dp"
         android:text = "No position selected"
-        android:background="@drawable/TextBox"
+        android:background="@drawable/text_box"
         android:layout_height="30dp"
         android:hint="@string/time_message" />
         </RelativeLayout>
@@ -102,7 +102,7 @@
                 android:paddingTop="5dp"
                 android:paddingLeft="10dp"
                 android:layout_width="300dp"
-                android:background="@drawable/TextBox"
+                android:background="@drawable/text_box"
                 android:layout_height="30dp"
                 android:hint="@string/time_message" />
         </RelativeLayout>

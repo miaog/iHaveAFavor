@@ -119,7 +119,6 @@ public class FavorUser implements Parcelable{
         double longitude = 0;
         double latitude = 0;
         try {
-            ActivityCompat.requestPermissions(ma, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             longitude = location.getLongitude();
             latitude = location.getLatitude();
@@ -267,15 +266,11 @@ public class FavorUser implements Parcelable{
                 }
         ).executeAsync();
         */
-
-
-
     }
 
     public void fetchOffers(final View v){
         if(currFavor == null) //there can't be offers if there aren't any favors
             return;
-
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Offer");
         query.whereEqualTo("favor", currFavor);
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -284,11 +279,9 @@ public class FavorUser implements Parcelable{
                     if (offers.size() != 0) {
                         offerlist= offers;
                         //sort the favors TODO
-
                         Snackbar.make(v.findViewById(android.R.id.content), "lotsa offers", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     }
-
                 } else {
                     Snackbar.make(v.findViewById(android.R.id.content), "nothing", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
@@ -320,7 +313,7 @@ public class FavorUser implements Parcelable{
     }
 
 
-    public void fetchTransactions(View v){
+    public void fetchTransactions(final View v){
         ParseQuery<ParseObject> query1 = ParseQuery.getQuery("Transaction");
         query1.whereEqualTo("helper_id",userId);
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Transaction");
@@ -351,7 +344,7 @@ public class FavorUser implements Parcelable{
     }
 
     private void initFavorList(){
-        return;
+
     }
     /*
     public void getAllFavors();

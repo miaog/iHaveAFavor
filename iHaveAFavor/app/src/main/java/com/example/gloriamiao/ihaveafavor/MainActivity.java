@@ -43,14 +43,15 @@ public class MainActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
         callbackManager = CallbackManager.Factory.create();
-        user = new FavorUser(this);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        user = new FavorUser(this, lm);
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-        lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+
 
         Parse.initialize(new Parse.Configuration.Builder(this)
                         .applicationId("myAppId")
@@ -120,19 +121,13 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+       // if (id == R.id.action_settings) {
+          //  return true;
+        //}
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void postFavor(View view){
-        user.post_favor("Truc","Bidule");
-    }
-    public void delFavor(View view){
-        user.del_favor_offers();
-    }
     public void fetchFavors(View view){
         user.fetchFavors();
     }

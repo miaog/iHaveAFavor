@@ -127,6 +127,8 @@ public class FavorUser implements Parcelable{
         ParseGeoPoint point = new ParseGeoPoint(latitude, longitude);
         currFavor.put("location",point);
         currFavor.saveInBackground();
+
+        favorlist.add(currFavor);
     }
 
     public void accept_favor(ParseObject favor){
@@ -331,8 +333,8 @@ public class FavorUser implements Parcelable{
                         transactionlist = transactions;
                         //sort the favors TODO
 
-                        Snackbar.make(v.findViewById(android.R.id.content), "lotsa transactions", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
+//                        Snackbar.make(v.findViewById(android.R.id.content), "lotsa transactions", Snackbar.LENGTH_LONG)
+//                                .setAction("Action", null).show();
                     }
 
                 } else {

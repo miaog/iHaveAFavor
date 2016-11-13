@@ -96,6 +96,7 @@ public class ItemListActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, ItemDetailActivity.class);
+                    intent.putExtra("favor_key", holder.mItem.key);
                     intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, holder.mItem.description);
                     intent.putExtra("favor", favor);
                     context.startActivity(intent);
